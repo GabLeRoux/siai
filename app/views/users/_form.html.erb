@@ -70,7 +70,7 @@
           <p class="control">
             <%= f.label :course_id, "Coordenador?", class: 'label' %>
             <span class="select is-medium">
-              <%= f.select :course_id, Course.initials, { prompt: "Curso Coordenado" }, { :class => "select2" } %>
+              <%= f.select :course_id, Student::Course.initials, { prompt: "Curso Coordenado" }, { :class => "select2" } %>
             </span>
           </p>
         </div>

@@ -9,7 +9,7 @@
 #  initial    :string
 #
 
-class Course < ApplicationRecord
+class Student::Course < ApplicationRecord
   include SearchCop
 
   # Validações

@@ -1,4 +1,4 @@
-module IncidentHelpers
+module Student::IncidentHelpers
   def create_new_incident(options = {})
     select options[:student], from: "Estudante"
     select options[:course], from: "Turma"
@@ -15,5 +15,5 @@ module IncidentHelpers
 end
 
 RSpec.configure do |config|
-  config.include IncidentHelpers, type: :feature
+  config.include Student::IncidentHelpers, type: :feature
 end

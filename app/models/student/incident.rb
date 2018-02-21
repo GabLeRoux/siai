@@ -21,7 +21,7 @@
 #  school_group  :integer
 #
 
-class Incident < ApplicationRecord
+class Student::Incident < ApplicationRecord
   include SearchCop
 
   validates :user, :course, :assistant, :institution, :description,

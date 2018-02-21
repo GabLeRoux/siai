@@ -11,7 +11,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Course, type: :model do
+RSpec.describe Student::Course, type: :model do
   before(:each) do
     @course = FactoryBot.create(:course)
   end
@@ -37,9 +37,9 @@ RSpec.describe Course, type: :model do
   ['names', 'initials'].each do |method|
     describe "##{method}" do
       it "should return an array" do
-        expect(Course.method(method).call).to be_an_instance_of(Array)
+        expect(Student::Course.method(method).call).to be_an_instance_of(Array)
 
-        Course.method(method).call.each do |name|
+        Student::Course.method(method).call.each do |name|
           expect(name).to be_an_instance_of(Array)
         end
       end
@@ -47,7 +47,7 @@ RSpec.describe Course, type: :model do
   end
 
   describe ".ordenation_attributes" do
-    ordenation_attributes = Course.ordenation_attributes
+    ordenation_attributes = Student::Course.ordenation_attributes
 
     it "should return an array" do
       expect(ordenation_attributes).to be_an_instance_of(Array)
@@ -59,7 +59,7 @@ RSpec.describe Course, type: :model do
 
     ordenation_attributes.each do |attribute|
       it "should return user attribute #{attribute}" do
-        expect(Course.attribute_names.include?(attribute.last)).to be true
+        expect(Student::Course.attribute_names.include?(attribute.last)).to be true
       end
     end
   end

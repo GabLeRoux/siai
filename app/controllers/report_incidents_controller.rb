@@ -1,5 +1,5 @@
-class ReportIncidentsController < ApplicationController
-  load_and_authorize_resource Incident
+class ReportStudent::IncidentsController < ApplicationController
+  load_and_authorize_resource Student::Incident
   add_breadcrumb "Home", :root_path
 
   skip_before_action :verify_authenticity_token  
@@ -11,7 +11,7 @@ class ReportIncidentsController < ApplicationController
   end
 
   def create
-    incidents = Incident.search(set_conditional).search(set_date_range)
+    incidents = Student::Incident.search(set_conditional).search(set_date_range)
     if incidents.present?
       @incidents = incidents
       render layout: false

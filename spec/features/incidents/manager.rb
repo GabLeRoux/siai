@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context "Manager entity Incident" do
+context "Manager entity Student::Incident" do
   before(:each) do
     @student = FactoryBot.create(:student)
     @course = FactoryBot.create(:course)

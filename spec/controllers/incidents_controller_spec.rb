@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe IncidentsController, type: :controller do
+RSpec.describe Students::IncidentsController, type: :controller do
   before(:each) do
     @user = FactoryBot.create(:user)
     @student = FactoryBot.create(:student)
@@ -10,7 +10,7 @@ RSpec.describe IncidentsController, type: :controller do
                        .merge({assistant_id: @user.id })
                        .merge({course_id: @student.course.id})
     @model = FactoryBot.create(:incident)
-    @entity = 'Incident'
+    @entity = 'Student::Incident'
     @path = incidents_path
   end
 

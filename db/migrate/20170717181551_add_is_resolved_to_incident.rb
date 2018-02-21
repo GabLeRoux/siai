@@ -1,4 +1,4 @@
-class AddIsResolvedToIncident < ActiveRecord::Migration[5.1]
+class AddIsResolvedToStudent::Incident < ActiveRecord::Migration[5.1]
   def change
     add_column :incidents, :is_resolved, :integer
   end

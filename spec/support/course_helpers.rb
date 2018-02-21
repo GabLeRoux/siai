@@ -1,4 +1,4 @@
-module CourseHelpers
+module Student::CourseHelpers
   def create_new_course(options = {})
     name = options[:name] || Faker::Name.name
 
@@ -10,5 +10,5 @@ module CourseHelpers
 end
 
 RSpec.configure do |config|
-  config.include CourseHelpers, type: :feature
+  config.include Student::CourseHelpers, type: :feature
 end

@@ -1,4 +1,4 @@
-class IncidentsController < ApplicationController
+class Students::IncidentsController < ApplicationController
   include ParamsSearch
 
   load_and_authorize_resource
@@ -13,7 +13,7 @@ class IncidentsController < ApplicationController
     add_breadcrumb "Diren", sector_actions_path('diren')
     add_breadcrumb "Ocorrências"
 
-    @incidents = Incident.order("#{set_order}": :desc)
+    @incidents = Student::Incident.order("#{set_order}": :desc)
                          .search(params[:search])
                          .page(params[:page]).per(set_amount_return)
   end
@@ -23,11 +23,11 @@ class IncidentsController < ApplicationController
     add_breadcrumb "Ocorrências", :incidents_path
     add_breadcrumb "Nova ocorrências"
 
-    @incidents = Incident.new
+    @incidents = Student::Incident.new
   end
 
   def create
-    @incident = Incident.new(incident_params)
+    @incident = Student::Incident.new(incident_params)
     @incident.user = current_user
     if @incident.save
       send_email_to(@incident&.course&.coordinator&.email)
@@ -100,9 +100,9 @@ class IncidentsController < ApplicationController
 
   def set_incident
     if params[:id]
-      @incident = Incident.find(params[:id])
+      @incident = Student::Incident.find(params[:id])
     else
-      @incident = Incident.find(params[:incident_id])
+      @incident = Student::Incident.find(params[:incident_id])
     end
   end
 

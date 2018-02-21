@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe CoursesController, type: :controller do
+RSpec.describe Students::CoursesController, type: :controller do
   before(:each) do
     @user = FactoryBot.create(:user)
     @attr = FactoryBot.attributes_for(:course)
     @model = FactoryBot.create(:course)
-    @entity = 'Course'
-    @path = courses_path
+    @entity = 'Student::Course'
+    @path = students_courses_path
   end
 
   include_examples "permission_controller"
@@ -40,7 +40,7 @@ RSpec.describe CoursesController, type: :controller do
   describe "DELETE #destroy" do
     context 'params with empty value' do
       it "renders page with error message" do
-        expect_any_instance_of(Course).to receive(:destroy).and_return(false)
+        expect_any_instance_of(Student::Course).to receive(:destroy).and_return(false)
 
         add_permission @entity, @user, destroy: true
         sign_in @user

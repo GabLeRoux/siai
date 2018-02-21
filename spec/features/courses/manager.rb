@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-context "Manager (crud) entity Course" do
+context "Manager (crud) entity Student::Course" do
   before(:each) do
     @user = FactoryBot.create(:user)
     @course = FactoryBot.create(:course)
@@ -9,13 +9,13 @@ context "Manager (crud) entity Course" do
 
   feature 'create' do
     scenario 'with valid data' do
-      visit new_course_path
+      visit new_students_course_path
       create_new_course
       expect(page).to have_content("Curso cadastro com sucesso")
     end
 
     scenario 'with existent title' do
-      visit new_course_path
+      visit new_students_course_path
       create_new_course name: @course.name
       expect(page).to have_content("Nome já está em uso")
     end
@@ -23,7 +23,7 @@ context "Manager (crud) entity Course" do
 
   feature 'update' do
     scenario 'with valid data' do
-      visit edit_course_path(@course)
+      visit edit_students_course_path(@course)
       new_name = Faker::Name.name
       fill_in 'Nome', with: new_name
       click_button 'Salvar'
@@ -35,7 +35,7 @@ context "Manager (crud) entity Course" do
 
   feature 'delete' do
     scenario 'with sucess' do
-      visit courses_path
+      visit students_courses_path
       find("a[href='/courses/#{@course.id}']").click
       expect(page).to_not have_content(@course.name)
       expect(page).to have_content("Curso deletado com sucesso")

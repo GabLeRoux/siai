@@ -23,7 +23,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Incident, type: :model do
+RSpec.describe Student::Incident, type: :model do
   before(:each) do
     @incident = FactoryBot.create :incident
   end
@@ -74,31 +74,31 @@ RSpec.describe Incident, type: :model do
       it "find incident by student" do
         conditionals = {}
         conditionals[:student] = @incident.student.id
-        expect(Incident.search(conditionals)).to eq([@incident])
+        expect(Student::Incident.search(conditionals)).to eq([@incident])
       end
 
       it "find incident by course" do
         conditionals = {}
         conditionals[:course] = @incident.course.id
-        expect(Incident.search(conditionals)).to eq([@incident])
+        expect(Student::Incident.search(conditionals)).to eq([@incident])
       end
 
       it "find incident by institution" do
         conditionals = {}
         conditionals[:institution] = 0
-        expect(Incident.search(conditionals)).to eq([@incident])
+        expect(Student::Incident.search(conditionals)).to eq([@incident])
       end
 
       it "find incident by type_student" do
         conditionals = {}
         conditionals[:type_student] = 1
-        expect(Incident.search(conditionals)).to eq([@incident])
+        expect(Student::Incident.search(conditionals)).to eq([@incident])
       end
 
       it "find incident by range date" do
         conditionals = {}
         range_date = "date_incident >= #{@incident.date_incident - 1.day} AND date_incident <= #{@incident.date_incident + 1.day}"
-        expect(Incident.search(conditionals).search(range_date)).to eq([@incident])
+        expect(Student::Incident.search(conditionals).search(range_date)).to eq([@incident])
       end
     end
 
@@ -110,7 +110,7 @@ RSpec.describe Incident, type: :model do
         conditionals[:institution] = 0
         conditionals[:type_student] = 1
         range_date = "date_incident >= #{@incident.date_incident - 1.day} AND date_incident <= #{@incident.date_incident + 1.day}"
-        expect(Incident.search(conditionals).search(range_date)).to eq([@incident])
+        expect(Student::Incident.search(conditionals).search(range_date)).to eq([@incident])
       end
     end
   end
@@ -180,7 +180,7 @@ RSpec.describe Incident, type: :model do
   end
 
   describe ".ordenation_attributes" do
-    ordenation_attributes = Incident.ordenation_attributes
+    ordenation_attributes = Student::Incident.ordenation_attributes
 
     it "should return an array" do
       expect(ordenation_attributes).to be_an_instance_of(Array)
@@ -193,7 +193,7 @@ RSpec.describe Incident, type: :model do
     ordenation_attributes.each do |attribute|
       it "should return user attribute #{attribute}" do
         if attribute.last != 'student_name'
-          expect(Incident.attribute_names.include?(attribute.last)).to be true
+          expect(Student::Incident.attribute_names.include?(attribute.last)).to be true
         end
       end
     end

@@ -15,7 +15,7 @@
       <%= f.label :course, 'Turma', class: 'label' %>
       <p class="control">
         <span class="select">
-          <%= f.select :course, Course.names, { prompt: "Selecione a turma" }, { :class => "select2 is-medium" } %>
+          <%= f.select :course, Student::Course.names, { prompt: "Selecione a turma" }, { :class => "select2 is-medium" } %>
         </span>
       </p>
     </div>
@@ -24,13 +24,13 @@
       <%= f.label :student, 'Residente?', class: 'label' %>
       <p class="control">
         <span class="select">
-          <%= f.select :type_student, Incident.type_students.map { |key, value| [key.humanize, value] }, { include_blank: true }, { :class => "is-medium" } %>
+          <%= f.select :type_student, Student::Incident.type_students.map { |key, value| [key.humanize, value] }, { include_blank: true }, { :class => "is-medium" } %>
         </span>
       </p>
       <%= f.label :student, 'Instituição', class: 'label' %>
       <p class="control">
         <span class="select">
-          <%= f.select :institution, Incident.institutions.map { |key, value| [key.upcase, value] }, { include_blank: true }, { :class => "is-medium", include_blank: true } %>
+          <%= f.select :institution, Student::Incident.institutions.map { |key, value| [key.upcase, value] }, { include_blank: true }, { :class => "is-medium", include_blank: true } %>
         </span>
       </p>
     </div>

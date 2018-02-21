@@ -24,12 +24,12 @@
   </p>
   <ul class="menu-list">
     <% if can? :read, Student %>
-      <li><%= active_link_to 'Estudantes', students_path %></li>
+      <li><%= active_link_to 'Estudantes', students_path, active: :exact %></li>
     <% end %>
-    <% if can? :read, Course %>
-      <li><%= active_link_to 'Cursos', courses_path %></li>
+    <% if can? :read, Student::Course %>
+      <li><%= active_link_to 'Cursos', students_courses_path %></li>
     <% end %>
-    <% if can? :read, Incident %>
+    <% if can? :read, Student::Incident %>
       <li><%= active_link_to 'Ocorrências', incidents_path %></li>
       <li><%= active_link_to 'Relatório ocorrências', new_report_incident_path %></li>
     <% end %>

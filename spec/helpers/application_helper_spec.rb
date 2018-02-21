@@ -42,7 +42,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe '.human_enum_name' do
     let(:human_enum_name) {
-      helper.human_enum_name('incident.type_student', Incident.type_students.keys)
+      helper.human_enum_name('incident.type_student', Student::Incident.type_students.keys)
     }
 
     it 'return hash' do

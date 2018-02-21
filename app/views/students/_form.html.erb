@@ -104,7 +104,7 @@
           <p class="control">
             <%= f.label :course_id, "Curso", class: 'label' %>
             <span class="select is-medium">
-              <%= f.select :course_id, Course.initials, {}, { :class => "select2" } %>
+              <%= f.select :course_id, Student::Course.initials, {}, { :class => "select2" } %>
             </span>
           </p>
         </div>

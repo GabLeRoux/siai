@@ -1,7 +1,7 @@
 <div class="columns no-print">
   <div class="column">
-    <% if can? :create, Course %>
-      <%= link_to new_course_path, class: "button is-success in-mobile-expand" do %>
+    <% if can? :create, Student::Course %>
+      <%= link_to new_students_course_path, class: "button is-success in-mobile-expand" do %>
         <span class="icon">
           <i class="ion-plus-round"></i>
         </span>
@@ -11,7 +11,7 @@
   </div>
   <div class="column">
     <% show_search_error_message(@courses, params) %>
-    <%= render 'layouts/search', path: courses_path, v: attr_order(@courses) %>
+    <%= render 'layouts/search', path: students_courses_path, v: attr_order(@courses) %>
   </div>
 </div>
 
@@ -34,16 +34,16 @@
         <div class="dropdown">
           <span class="button is-danger in-mobile-expand">Ações</span>
           <div class="dropdown-content">
-            <% if can? :update, Course %>
-              <%= link_to edit_course_path(course), class: 'button is-success in-mobile-expand' do %>
+            <% if can? :update, Student::Course %>
+              <%= link_to edit_students_course_path(course), class: 'button is-success in-mobile-expand' do %>
                 <span class="icon">
                   <i class="ion-edit"></i>
                 </span>
                 <span>Editar</span>
               <% end %>
             <% end %>
-            <% if can? :destroy, Course %>
-              <%= link_to course_path(course), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'button is-danger in-mobile-expand' do %>
+            <% if can? :destroy, Student::Course %>
+              <%= link_to students_course_path(course), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'button is-danger in-mobile-expand' do %>
                 <span class="icon">
                   <i class="ion-close"></i>
                 </span>

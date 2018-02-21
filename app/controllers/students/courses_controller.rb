@@ -1,7 +1,7 @@
-class CoursesController < ApplicationController
+class Students::CoursesController < ApplicationController
   include ParamsSearch
 
-  load_and_authorize_resource
+  load_and_authorize_resource class: "Student::Course"
 
   before_action :set_course, only: [:edit, :destroy, :update]
   add_breadcrumb "Home", :root_path
@@ -10,23 +10,23 @@ class CoursesController < ApplicationController
     add_breadcrumb "DIREN", sector_actions_path('diren')
     add_breadcrumb "Cursos"
 
-    @courses = Course.order("#{set_order}": :desc)
+    @courses = Student::Course.order("#{set_order}": :desc)
                      .search(params[:search])
                      .page(params[:page]).per(set_amount_return)
   end
 
   def new
     add_breadcrumb "DIREN", sector_actions_path('diren')
-    add_breadcrumb "Cursos", :courses_path
+    add_breadcrumb "Cursos", :students_courses_path
     add_breadcrumb "Novo curso"
 
-    @course = Course.new
+    @course = Student::Course.new
   end
 
   def create
-    @courses = Course.new(course_params)
+    @courses = Student::Course.new(course_params)
     if @courses.save
-      redirect_to courses_path, flash: { success: 'Curso cadastro com sucesso' }
+      redirect_to students_courses_path, flash: { success: 'Curso cadastro com sucesso' }
     else
       flash.now[:error] = @courses.errors.full_messages
       render :new
@@ -35,13 +35,13 @@ class CoursesController < ApplicationController
 
   def edit
     add_breadcrumb "DIREN", sector_actions_path('diren')
-    add_breadcrumb "Cursos", :courses_path
+    add_breadcrumb "Cursos", :students_courses_path
     add_breadcrumb "Atualizar curso"
   end
 
   def update
     if @courses.update(course_params)
-      redirect_to courses_path, flash: { success: 'Curso atualizado com sucesso' }
+      redirect_to students_courses_path, flash: { success: 'Curso atualizado com sucesso' }
     else
       flash.now[:error] = @courses.errors.full_messages
       render :edit
@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
   def destroy
     if @courses.destroy
       flash[:success] = "Curso deletado com sucesso"
-      redirect_back(fallback_location: courses_path)
+      redirect_back(fallback_location: students_courses_path)
     else
       flash.now[:error] = @courses.errors.full_messages
       render :new
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
   private
 
   def set_course
-    @courses = Course.find(params[:id])
+    @courses = Student::Course.find(params[:id])
   end
 
   def course_params

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe IncidentsController, type: :routing do
+RSpec.describe Students::IncidentsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

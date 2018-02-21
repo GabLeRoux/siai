@@ -62,7 +62,7 @@ class StudentsController < ApplicationController
   end
 
   def import_xls
-    course = Course.find(params[:course])
+    course = Student::Course.find(params[:course])
     book = Spreadsheet.open params[:xls].tempfile.path
     students_attributes = book.worksheet 0
     students_attributes.each 1 do |attributes|

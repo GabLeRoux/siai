@@ -15,7 +15,7 @@
           <%= f.label :course_id, 'Curso', class: 'label' %>
           <p class="control">
             <span class="select">
-              <%= f.select :course_id, Course.names, { prompt: "Selecione o Curso" }, { :class => "select2 is-medium" } %>
+              <%= f.select :course_id, Student::Course.names, { prompt: "Selecione o Curso" }, { :class => "select2 is-medium" } %>
             </span>
           </p>
         </div>
@@ -23,7 +23,7 @@
           <%= f.label :school_group, 'Turma', class: 'label' %>
           <p class="control">
             <span class="select">
-              <%= f.select :school_group, Incident.school_groups.keys.to_a, { prompt: "Selecione a Turma" }, { :class => "select select2 is-medium" } %>
+              <%= f.select :school_group, Student::Incident.school_groups.keys.to_a, { prompt: "Selecione a Turma" }, { :class => "select select2 is-medium" } %>
             </span>
           </p>
         </div>
@@ -31,7 +31,7 @@
           <%= f.label :type_student, 'Estudente é?', class: 'label' %>
           <p class="control">
             <span class="select">
-              <%= f.select :type_student, human_enum_name('incident.type_student', Incident.type_students.keys), {}, { :class => "select select2 is-medium" } %>
+              <%= f.select :type_student, human_enum_name('incident.type_student', Student::Incident.type_students.keys), {}, { :class => "select select2 is-medium" } %>
             </span>
           </p>
         </div>
@@ -63,7 +63,7 @@
           <%= f.label :institution, 'Instituição', class: 'label' %>
           <p class="control">
             <span class="select">
-              <%= f.select :institution, Incident.institutions.keys.to_a, {}, { :class => "select select2 is-medium" } %>
+              <%= f.select :institution, Student::Incident.institutions.keys.to_a, {}, { :class => "select select2 is-medium" } %>
             </span>
           </p>
         </div>
@@ -104,7 +104,7 @@
             <%= f.label :sanction, 'Sanção aplicada', class: 'label' %>
             <p class="control">
               <span class="select">
-                <%= f.select :sanction, human_enum_name('incident.sanction', Incident.sanctions.keys), { prompt: "Sanção aplicada" }, { :class => "select2 select is-medium" } %>
+                <%= f.select :sanction, human_enum_name('incident.sanction', Student::Incident.sanctions.keys), { prompt: "Sanção aplicada" }, { :class => "select2 select is-medium" } %>
               </span>
             </p>
           </div>
@@ -113,7 +113,7 @@
             <%= f.label :is_resolved, 'Ocorrências resolvida?', class: 'label' %>
             <p class="control">
               <span class="select">
-                <%= f.select :is_resolved, human_enum_name('incident.is_resolved', Incident.is_resolveds.keys), {}, { :class => "is-medium" } %>
+                <%= f.select :is_resolved, human_enum_name('incident.is_resolved', Student::Incident.is_resolveds.keys), {}, { :class => "is-medium" } %>
               </span>
             </p>
           </div>

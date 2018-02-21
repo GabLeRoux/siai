@@ -1,6 +1,6 @@
 <div class="columns">
   <div class="column">
-    <% if can? :create, Incident %>
+    <% if can? :create, Student::Incident %>
       <%= link_to new_incident_path, class: "button is-success in-mobile-expand" do %>
         <span class="icon">
           <i class="ion-plus-round"></i>
@@ -42,7 +42,7 @@
         <div class="dropdown">
           <span class="button is-danger in-mobile-expand">Ações</span>
           <div class="dropdown-content">
-            <% if can? :read, Incident %>
+            <% if can? :read, Student::Incident %>
               <%= link_to incident_path(incident), class: 'button is-success in-mobile-expand' do %>
                 <span class="icon">
                   <i class="ion-search"></i>
@@ -50,7 +50,7 @@
                 <span>Visualizar</span>
               <% end %>
             <% end %>
-            <% if can? :confirmation, Incident %>
+            <% if can? :confirmation, Student::Incident %>
               <% if incident.signed_in.nil? && !incident.student.nil? %>
                 <%= link_to incident_sign_path(incident), class: 'button' do %>
                   <span class="icon">
@@ -60,7 +60,7 @@
                 <% end %>
               <% end %>
             <% end %>
-            <% if can? :update, Incident %>
+            <% if can? :update, Student::Incident %>
               <%= link_to edit_incident_path(incident), class: 'button is-success' do %>
                 <span class="icon">
                   <i class="ion-edit"></i>
@@ -68,7 +68,7 @@
                 <span>Editar</span>
               <% end %>
             <% end %>
-            <% if can? :destroy, Incident %>
+            <% if can? :destroy, Student::Incident %>
               <%= link_to incident_path(incident), method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: 'button is-danger' do %>
                 <span class="icon">
                   <i class="ion-close"></i>

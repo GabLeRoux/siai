@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CoursesController, type: :routing do
+RSpec.describe Students::CoursesController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
